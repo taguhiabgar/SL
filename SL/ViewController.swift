@@ -19,15 +19,17 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         // tableView setup
         tableView = UITableView(frame: view.frame)
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
+        // register nib file
+        tableView.register(UINib.init(nibName: Constants.discussionsTableViewCellNibName, bundle: nil), forCellReuseIdentifier: Constants.discussionsTableViewCellIdentifier)
         
+        // read data from file
         discussions = requestData()
-        
-        self.tableView.reloadData()
     }
     
     // MARK: - Methods
@@ -47,7 +49,7 @@ class ViewController: UIViewController {
             return result
     }
     
-    public func requestData() -> [DiscussionContent] {
+    public func requestData() -> [DiscussionContent] { // only 1/3 file is being read
         let path = Bundle.main.path(forResource: "response1", ofType: "txt")
         do {
             let text = try String(contentsOfFile: path!)
@@ -61,18 +63,13 @@ class ViewController: UIViewController {
                         }
                     }
                 } catch {
-                    print(error)
+                    print(error)  // not handled
                 }
             }
         } catch {
-            print(error)
+            print(error) // not handled
         }
-        
-//        let responseObject: Data = Data()
-//        self.discussions = self.convertToArrayOfDictionaries(response: responseObject)
-        
         return []
-        
     }
     
     private func updateData() {
@@ -88,26 +85,19 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //        let discussion = discussions[indexPath.row]
-        let cell = DiscussionsTableViewCell()
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.discussionsTableViewCellIdentifier)
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        // not implemented
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        let discussionsCell = cell as! DiscussionsTableViewCell
-//        dcell.drawContent(content: DiscussionContent(title: <#T##String#>, tags: <#T##[String]#>, votesCount: <#T##Int#>, answersCount: <#T##Int#>, date: <#T##Date#>, author: <#T##String#>))
-        
+        // not impelemented
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Constants.emptyCellHeight
     }
 }
-
-
-
-
-
-
-
-

@@ -19,6 +19,9 @@
 		3D1FA7071F10E6DB00D665CA /* response2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D1FA7041F10E6DB00D665CA /* response2.txt */; };
 		3D1FA7081F10E6DB00D665CA /* response3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D1FA7051F10E6DB00D665CA /* response3.txt */; };
 		3D1FA70B1F10E83700D665CA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1FA70A1F10E83700D665CA /* Constants.swift */; };
+		3D1FA70D1F11347D00D665CA /* DiscussionContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1FA70C1F11347D00D665CA /* DiscussionContent.swift */; };
+		3D1FA7101F1134B300D665CA /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1FA70F1F1134B300D665CA /* UIColor.swift */; };
+		3D1FA7121F113A8400D665CA /* DiscussionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D1FA7111F113A8400D665CA /* DiscussionsTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,9 @@
 		3D1FA7041F10E6DB00D665CA /* response2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = response2.txt; sourceTree = "<group>"; };
 		3D1FA7051F10E6DB00D665CA /* response3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = response3.txt; sourceTree = "<group>"; };
 		3D1FA70A1F10E83700D665CA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3D1FA70C1F11347D00D665CA /* DiscussionContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscussionContent.swift; sourceTree = "<group>"; };
+		3D1FA70F1F1134B300D665CA /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		3D1FA7111F113A8400D665CA /* DiscussionsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscussionsTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,7 @@
 		3D1FA6D21F10D0B000D665CA /* SL */ = {
 			isa = PBXGroup;
 			children = (
+				3D1FA70E1F1134A700D665CA /* Extensions */,
 				3D1FA7091F10E6E000D665CA /* Resources */,
 				3D1FA6D31F10D0B000D665CA /* AppDelegate.swift */,
 				3D1FA6D51F10D0B000D665CA /* ViewController.swift */,
@@ -116,6 +123,8 @@
 				3D1FA6DA1F10D0B000D665CA /* Assets.xcassets */,
 				3D1FA6DC1F10D0B000D665CA /* LaunchScreen.storyboard */,
 				3D1FA6DF1F10D0B000D665CA /* Info.plist */,
+				3D1FA70C1F11347D00D665CA /* DiscussionContent.swift */,
+				3D1FA7111F113A8400D665CA /* DiscussionsTableViewCell.xib */,
 			);
 			path = SL;
 			sourceTree = "<group>";
@@ -146,6 +155,14 @@
 				3D1FA7051F10E6DB00D665CA /* response3.txt */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		3D1FA70E1F1134A700D665CA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3D1FA70F1F1134B300D665CA /* UIColor.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +278,7 @@
 				3D1FA6DE1F10D0B000D665CA /* LaunchScreen.storyboard in Resources */,
 				3D1FA7081F10E6DB00D665CA /* response3.txt in Resources */,
 				3D1FA6DB1F10D0B000D665CA /* Assets.xcassets in Resources */,
+				3D1FA7121F113A8400D665CA /* DiscussionsTableViewCell.xib in Resources */,
 				3D1FA6D91F10D0B000D665CA /* Main.storyboard in Resources */,
 				3D1FA7061F10E6DB00D665CA /* response1.txt in Resources */,
 				3D1FA7071F10E6DB00D665CA /* response2.txt in Resources */,
@@ -289,6 +307,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D1FA6D61F10D0B000D665CA /* ViewController.swift in Sources */,
+				3D1FA7101F1134B300D665CA /* UIColor.swift in Sources */,
+				3D1FA70D1F11347D00D665CA /* DiscussionContent.swift in Sources */,
 				3D1FA6D41F10D0B000D665CA /* AppDelegate.swift in Sources */,
 				3D1FA7021F10E33E00D665CA /* DiscussionsTableViewCell.swift in Sources */,
 				3D1FA70B1F10E83700D665CA /* Constants.swift in Sources */,
