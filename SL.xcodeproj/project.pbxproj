@@ -14,6 +14,11 @@
 		3D1FA6DE1F10D0B000D665CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D1FA6DC1F10D0B000D665CA /* LaunchScreen.storyboard */; };
 		3D1FA6E91F10D0B100D665CA /* SLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1FA6E81F10D0B100D665CA /* SLTests.swift */; };
 		3D1FA6F41F10D0B100D665CA /* SLUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1FA6F31F10D0B100D665CA /* SLUITests.swift */; };
+		3D1FA7021F10E33E00D665CA /* DiscussionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1FA7011F10E33E00D665CA /* DiscussionsTableViewCell.swift */; };
+		3D1FA7061F10E6DB00D665CA /* response1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D1FA7031F10E6DB00D665CA /* response1.txt */; };
+		3D1FA7071F10E6DB00D665CA /* response2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D1FA7041F10E6DB00D665CA /* response2.txt */; };
+		3D1FA7081F10E6DB00D665CA /* response3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D1FA7051F10E6DB00D665CA /* response3.txt */; };
+		3D1FA70B1F10E83700D665CA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1FA70A1F10E83700D665CA /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +52,11 @@
 		3D1FA6EF1F10D0B100D665CA /* SLUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SLUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D1FA6F31F10D0B100D665CA /* SLUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLUITests.swift; sourceTree = "<group>"; };
 		3D1FA6F51F10D0B100D665CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D1FA7011F10E33E00D665CA /* DiscussionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscussionsTableViewCell.swift; sourceTree = "<group>"; };
+		3D1FA7031F10E6DB00D665CA /* response1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = response1.txt; sourceTree = "<group>"; };
+		3D1FA7041F10E6DB00D665CA /* response2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = response2.txt; sourceTree = "<group>"; };
+		3D1FA7051F10E6DB00D665CA /* response3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = response3.txt; sourceTree = "<group>"; };
+		3D1FA70A1F10E83700D665CA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +107,11 @@
 		3D1FA6D21F10D0B000D665CA /* SL */ = {
 			isa = PBXGroup;
 			children = (
+				3D1FA7091F10E6E000D665CA /* Resources */,
 				3D1FA6D31F10D0B000D665CA /* AppDelegate.swift */,
 				3D1FA6D51F10D0B000D665CA /* ViewController.swift */,
+				3D1FA7011F10E33E00D665CA /* DiscussionsTableViewCell.swift */,
+				3D1FA70A1F10E83700D665CA /* Constants.swift */,
 				3D1FA6D71F10D0B000D665CA /* Main.storyboard */,
 				3D1FA6DA1F10D0B000D665CA /* Assets.xcassets */,
 				3D1FA6DC1F10D0B000D665CA /* LaunchScreen.storyboard */,
@@ -123,6 +136,16 @@
 				3D1FA6F51F10D0B100D665CA /* Info.plist */,
 			);
 			path = SLUITests;
+			sourceTree = "<group>";
+		};
+		3D1FA7091F10E6E000D665CA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3D1FA7031F10E6DB00D665CA /* response1.txt */,
+				3D1FA7041F10E6DB00D665CA /* response2.txt */,
+				3D1FA7051F10E6DB00D665CA /* response3.txt */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,8 +259,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D1FA6DE1F10D0B000D665CA /* LaunchScreen.storyboard in Resources */,
+				3D1FA7081F10E6DB00D665CA /* response3.txt in Resources */,
 				3D1FA6DB1F10D0B000D665CA /* Assets.xcassets in Resources */,
 				3D1FA6D91F10D0B000D665CA /* Main.storyboard in Resources */,
+				3D1FA7061F10E6DB00D665CA /* response1.txt in Resources */,
+				3D1FA7071F10E6DB00D665CA /* response2.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +290,8 @@
 			files = (
 				3D1FA6D61F10D0B000D665CA /* ViewController.swift in Sources */,
 				3D1FA6D41F10D0B000D665CA /* AppDelegate.swift in Sources */,
+				3D1FA7021F10E33E00D665CA /* DiscussionsTableViewCell.swift in Sources */,
+				3D1FA70B1F10E83700D665CA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
