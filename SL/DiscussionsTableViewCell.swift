@@ -25,12 +25,9 @@ class DiscussionsTableViewCell: UITableViewCell {
     @IBOutlet weak var tagsView: UIView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
-    
-    // stack views
-    
-    @IBOutlet weak var titleStackView: UIStackView!
-    @IBOutlet weak var tagsStackView: UIStackView!
     @IBOutlet weak var bottomStackView: UIStackView!
+    
+    @IBOutlet weak var tagsViewHeightConstraint: NSLayoutConstraint!
     
     
     // MARK: - Methods
@@ -44,10 +41,10 @@ class DiscussionsTableViewCell: UITableViewCell {
         
         // configure title label
         titleLabel.lineBreakMode = .byWordWrapping
-        titleLabel.sizeToFit()
+//        titleLabel.sizeToFit()
         
         // tags view
-//        setupTagsView(with: content.tags)
+        setupTagsView(with: content.tags)
         
         
         
@@ -57,37 +54,46 @@ class DiscussionsTableViewCell: UITableViewCell {
     
     private func setupTagsView(with tags: [String]) {
         // remove subviews
-//        for subview in tagsView.subviews {
-//            subview.removeFromSuperview()
-//        }
-//        
-//        var lastX: CGFloat = 0
-//        var lastY: CGFloat = 0
+        for subview in tagsView.subviews {
+            subview.removeFromSuperview()
+        }
+        
+        var lastX: CGFloat = 0
+        var lastY: CGFloat = 0
         
         // create labels
         for tag in tags {
             let tagLabel = UILabel()
-            tagLabel.layer.masksToBounds = true
             tagLabel.text = tag
             tagLabel.font = dateLabel.font
             tagLabel.sizeToFit()
-            tagLabel.layer.cornerRadius = 4.0
-            tagLabel.backgroundColor = Constants.discussionsTCTagColor
             tagLabel.textColor = UIColor.white
             tagLabel.textAlignment = .center
             tagLabel.frame.size.width = tagLabel.intrinsicContentSize.width + 2 * Constants.discussionsTCTagTitleHorizontalMargin
+            
+            // for smooth scrolling
+            tagLabel.backgroundColor = UIColor.clear
+            tagLabel.layer.backgroundColor = Constants.discussionsTCTagColor.cgColor
+            tagLabel.layer.cornerRadius = 4
+            tagLabel.layer.masksToBounds = false
+            tagLabel.layer.shouldRasterize = true
+            tagLabel.layer.rasterizationScale = UIScreen.main.scale
+            
             // calculate position of label
-//            if lastX + tagLabel.frame.width >= tagsView.frame.width {
-//                lastX = 0
-//                lastY += tagLabel.frame.height + Constants.discussionsTCTagsVerticalPadding
-//            }
-//            tagLabel.frame.origin = CGPoint(x: lastX, y: lastY)
-//            lastX += tagLabel.frame.width + Constants.discussionsTCTagsHorizontalPadding
+            if lastX + tagLabel.frame.width >= tagsView.frame.width {
+                lastX = 0
+                lastY += tagLabel.frame.height + Constants.discussionsTCTagsVerticalPadding
+            }
+            tagLabel.frame.origin = CGPoint(x: lastX, y: lastY)
+            lastX += tagLabel.frame.width + Constants.discussionsTCTagsHorizontalPadding
             
             tagsView.addSubview(tagLabel)
         }
         setNeedsLayout()
         setNeedsUpdateConstraints()
+//        tagsView.frame.size.height = 50.0
+        tagsViewHeightConstraint.constant = 50
+        updateConstraints()
 //        tagsView.frame.size.height = lastY + tagLabels[0].frame.height
     }
 }
