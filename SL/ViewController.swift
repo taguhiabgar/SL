@@ -13,26 +13,42 @@ class ViewController: UIViewController {
     // MARK: - Properties
     
     var tableView: UITableView!
-    var discussions = [DiscussionContent]() // contains models of all loaded discussions
-    var nextResourceIndex = 0 // shows index of file which will be loaded when requested
-    var lastPage = 0 // shows page number of discussions loaded last time
+    
+    // contains models of all loaded discussions
+    var discussions = [DiscussionContent]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.updateView()
+            }
+        }
+    }
+    
+    // shows index of file which will be loaded when requested
+    var nextResourceIndex = 0
+    
+    // shows page number of discussions loaded last time
+    var lastPage = 0
     
     // MARK: - Lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // tableView setup
+        // tableView basic setup
         tableView = UITableView(frame: view.frame)
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
+        
         // register nib file
         tableView.register(UINib.init(nibName: Constants.discussionsTableViewCellNibName, bundle: nil), forCellReuseIdentifier: Constants.discussionsTableViewCellIdentifier)
         
+        // configure row height
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = Constants.emptyCellHeight
+        
         // read data from file
         perform(#selector(requestData), with: nil, afterDelay: 2.0)
-//        requestData()
     }
     
     // MARK: - Methods
@@ -68,7 +84,7 @@ class ViewController: UIViewController {
                                 let result = self.convertToDiscussions(array: array)
                                 self.discussions = result
                                 DispatchQueue.main.async {
-                                    self.updateData()
+                                    self.updateView()
                                 }
                             }
                         }
@@ -82,8 +98,13 @@ class ViewController: UIViewController {
         }
     }
     
-    private func updateData() {
+    private func updateView() {
         tableView.reloadData()
+//        for indexPath in tableView.indexPathsForVisibleRows! {
+//            let cell = tableView.cellForRow(at: indexPath)
+//            let discussionCell = cell as? DiscussionsTableViewCell
+//            discussionCell?.drawContent(content: discussions[indexPath.row])
+//        }
     }
     
     private func nextResourceName() -> String {
@@ -117,9 +138,5 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             let discussionCell = cell as? DiscussionsTableViewCell
             discussionCell?.drawContent(content: discussions[indexPath.row])
         }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Constants.emptyCellHeight
     }
 }
