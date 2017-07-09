@@ -41,11 +41,13 @@ class ViewController: UIViewController {
         tableView.dataSource = self
         
         // register nib file
-        tableView.register(UINib.init(nibName: Constants.discussionsTableViewCellNibName, bundle: nil), forCellReuseIdentifier: Constants.discussionsTableViewCellIdentifier)
+        tableView.register(UINib.init(nibName: Constants.discussionsTCNibName, bundle: nil), forCellReuseIdentifier: Constants.discussionsTCIdentifier)
         
         // configure row height
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = Constants.emptyCellHeight
+        
+//        tableView.allowsSelection = false
         
         // read data from file
         perform(#selector(requestData), with: nil, afterDelay: 2.0)
@@ -82,7 +84,7 @@ class ViewController: UIViewController {
                         if let outerDictionary = jsonObject as? Dictionary<String, Any> {
                             if let array = outerDictionary["posts"] as? Array<Dictionary<String, Any>> {
                                 let result = self.convertToDiscussions(array: array)
-                                self.discussions = result
+                                self.discussions.append(contentsOf: result)
                                 DispatchQueue.main.async {
                                     self.updateView()
                                 }
@@ -125,12 +127,20 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.discussionsTableViewCellIdentifier)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.discussionsTCIdentifier)
+//        let discussionCell = cell as! DiscussionsTableViewCell
+//        for subview in discussionCell.tagsView.subviews {
+//            subview.removeFromSuperview()
+//        }
+//        discussionCell.titleLabel.text = nil
+        
+        
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // not implemented
+        print(discussions[indexPath.row].tags)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -138,5 +148,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             let discussionCell = cell as? DiscussionsTableViewCell
             discussionCell?.drawContent(content: discussions[indexPath.row])
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
     }
 }

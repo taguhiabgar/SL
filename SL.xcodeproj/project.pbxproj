@@ -21,7 +21,7 @@
 		3D1FA70B1F10E83700D665CA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1FA70A1F10E83700D665CA /* Constants.swift */; };
 		3D1FA70D1F11347D00D665CA /* DiscussionContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1FA70C1F11347D00D665CA /* DiscussionContent.swift */; };
 		3D1FA7101F1134B300D665CA /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1FA70F1F1134B300D665CA /* UIColor.swift */; };
-		3D1FA7121F113A8400D665CA /* DiscussionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D1FA7111F113A8400D665CA /* DiscussionsTableViewCell.xib */; };
+		3D1FA7181F125EBA00D665CA /* DiscussionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D1FA7171F125EBA00D665CA /* DiscussionsTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +62,7 @@
 		3D1FA70A1F10E83700D665CA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3D1FA70C1F11347D00D665CA /* DiscussionContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscussionContent.swift; sourceTree = "<group>"; };
 		3D1FA70F1F1134B300D665CA /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		3D1FA7111F113A8400D665CA /* DiscussionsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscussionsTableViewCell.xib; sourceTree = "<group>"; };
+		3D1FA7171F125EBA00D665CA /* DiscussionsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscussionsTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,7 +124,7 @@
 				3D1FA6DC1F10D0B000D665CA /* LaunchScreen.storyboard */,
 				3D1FA6DF1F10D0B000D665CA /* Info.plist */,
 				3D1FA70C1F11347D00D665CA /* DiscussionContent.swift */,
-				3D1FA7111F113A8400D665CA /* DiscussionsTableViewCell.xib */,
+				3D1FA7171F125EBA00D665CA /* DiscussionsTableViewCell.xib */,
 			);
 			path = SL;
 			sourceTree = "<group>";
@@ -278,7 +278,7 @@
 				3D1FA6DE1F10D0B000D665CA /* LaunchScreen.storyboard in Resources */,
 				3D1FA7081F10E6DB00D665CA /* response3.txt in Resources */,
 				3D1FA6DB1F10D0B000D665CA /* Assets.xcassets in Resources */,
-				3D1FA7121F113A8400D665CA /* DiscussionsTableViewCell.xib in Resources */,
+				3D1FA7181F125EBA00D665CA /* DiscussionsTableViewCell.xib in Resources */,
 				3D1FA6D91F10D0B000D665CA /* Main.storyboard in Resources */,
 				3D1FA7061F10E6DB00D665CA /* response1.txt in Resources */,
 				3D1FA7071F10E6DB00D665CA /* response2.txt in Resources */,
@@ -564,6 +564,7 @@
 				3D1FA6FA1F10D0B100D665CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3D1FA6FB1F10D0B100D665CA /* Build configuration list for PBXNativeTarget "SLTests" */ = {
 			isa = XCConfigurationList;
@@ -572,6 +573,7 @@
 				3D1FA6FD1F10D0B100D665CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3D1FA6FE1F10D0B100D665CA /* Build configuration list for PBXNativeTarget "SLUITests" */ = {
 			isa = XCConfigurationList;
@@ -580,6 +582,7 @@
 				3D1FA7001F10D0B100D665CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

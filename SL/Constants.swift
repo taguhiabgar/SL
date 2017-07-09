@@ -12,12 +12,6 @@ class Constants {
     
     static let responceLimitPerRequest = 20
     
-    static let discussionsTableViewCellIdentifier = "discussionCell"
-    
-    static let discussionsTableViewCellNibName = "DiscussionsTableViewCell"
-    
-    static let emptyCellHeight: CGFloat = UIScreen.main.bounds.height * 0.2
-    
     static let allResources = [
         Bundle.main.path(forResource: "response1", ofType: "txt"),
         Bundle.main.path(forResource: "response2", ofType: "txt"),
@@ -25,6 +19,23 @@ class Constants {
     ]
     
     // MARK: - Discussions
+    // TC stands for TableViewCell
+    
+    // cell
+    
+    static let emptyCellHeight: CGFloat = UIScreen.main.bounds.height * 0.2
+    
+    static let discussionsTCIdentifier = "discussionCell"
+    
+    static let discussionsTCNibName = "DiscussionsTableViewCell"
+    
+    static let discussionsTCTagColor = UIColor(red: 148.0 / 256.0, green: 200.0 / 256.0, blue: 141.0 / 256.0, alpha: 1.0)
+    
+    static let discussionsTCTagTitleHorizontalMargin: CGFloat = 3
+    
+    static let discussionsTCTagsHorizontalPadding: CGFloat = 5
+    
+    static let discussionsTCTagsVerticalPadding: CGFloat = 4
     
     //  values accessors
     
