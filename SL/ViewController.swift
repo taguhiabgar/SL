@@ -47,7 +47,7 @@ class ViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = Constants.emptyCellHeight
         
-        tableView.allowsSelection = false
+//        tableView.allowsSelection = false
         
         // read data from file
         perform(#selector(requestData), with: nil, afterDelay: 2.0)
@@ -154,9 +154,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         print("height \(indexPath.row)")
-        if indexPath.row < discussions.count {
+//        if indexPath.row < discussions.count {
 //            return heightForCell(withDiscussion: discussions[indexPath.row])
-        }
+//        }
+//        return UITableViewAutomaticDimension //150
         return 150
     }
 }

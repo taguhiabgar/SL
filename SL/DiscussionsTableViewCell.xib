@@ -62,13 +62,9 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pT6-IV-Qgf">
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vGX-4n-CA4">
                                     <rect key="frame" x="0.0" y="20.5" width="312.5" height="626.5"/>
-                                    <color key="backgroundColor" red="1" green="0.8047459476198926" blue="0.45578467729729932" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="omW-cN-EbK"/>
-                                    </constraints>
-                                </view>
+                                </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="oZ2-Bf-UqC">
                                     <rect key="frame" x="0.0" y="647" width="312.5" height="20"/>
                                     <subviews>
@@ -90,10 +86,6 @@
                                     </constraints>
                                 </stackView>
                             </subviews>
-                            <constraints>
-                                <constraint firstItem="pT6-IV-Qgf" firstAttribute="top" secondItem="5EJ-9m-T5w" secondAttribute="bottom" id="Hmb-gA-SpN"/>
-                                <constraint firstItem="oZ2-Bf-UqC" firstAttribute="top" secondItem="pT6-IV-Qgf" secondAttribute="bottom" id="kuH-6N-OZw"/>
-                            </constraints>
                         </stackView>
                     </subviews>
                     <constraints>
@@ -115,7 +107,7 @@
                 <outlet property="dateLabel" destination="f23-6y-tbS" id="HME-LM-tBL"/>
                 <outlet property="leftView" destination="4rb-Xm-sMa" id="Ybo-aB-y22"/>
                 <outlet property="rightView" destination="QXM-4S-uOX" id="PwG-Kn-kgl"/>
-                <outlet property="tagsView" destination="pT6-IV-Qgf" id="0Fl-gO-FHr"/>
+                <outlet property="tagsVerticalStackView" destination="vGX-4n-CA4" id="HAs-WG-Bdc"/>
                 <outlet property="titleLabel" destination="5EJ-9m-T5w" id="aVM-82-Yal"/>
                 <outlet property="votesLabel" destination="oD0-nv-Z5c" id="ggI-ri-CFJ"/>
             </connections>

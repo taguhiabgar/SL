@@ -22,10 +22,14 @@ class DiscussionsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var rightView: UIStackView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var tagsView: UIView!
+    var tagsView: UIView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var bottomStackView: UIStackView!
+    
+    @IBOutlet weak var tagsVerticalStackView: UIStackView!
+    
+    
     
     var cellHeight: CGFloat = 0
     
@@ -36,7 +40,7 @@ class DiscussionsTableViewCell: UITableViewCell {
     func drawContent(content: DiscussionContent) {
         votesLabel.text = "\(content.votesCount)"
         answersLabel.text = "\(content.answersCount)"
-        titleLabel.text = content.title
+        titleLabel.text = content.title.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         dateLabel.text = "\(content.date)"
         authorLabel.text = content.author
         
@@ -49,15 +53,26 @@ class DiscussionsTableViewCell: UITableViewCell {
         
         cellHeight = tagsMaxY + titleLabel.frame.height + bottomStackView.frame.height
         
+        
+        tagsView.frame = CGRect(x: 0, y: 0, width: titleLabel.frame.width, height: tagsMaxY)
+//        tagsView.frame.size.height = tagsMaxY
+        
+        tagsVerticalStackView.addArrangedSubview(tagsView)
+        
         // NOTE: - height may vary here
         
     }
     
     private func setupTagsView(with tags: [String]) {
         // remove subviews
-        for subview in tagsView.subviews {
-            subview.removeFromSuperview()
+        if tagsView != nil {
+            for subview in tagsView.subviews {
+                subview.removeFromSuperview()
+            }
+        } else {
+            tagsView = UIView()
         }
+        
         
         var lastX: CGFloat = 0
         var lastY: CGFloat = 0
@@ -81,7 +96,7 @@ class DiscussionsTableViewCell: UITableViewCell {
             tagLabel.layer.rasterizationScale = UIScreen.main.scale
             
             // calculate position of label
-            if lastX + tagLabel.frame.width >= tagsView.frame.width {
+            if lastX + tagLabel.frame.width >= titleLabel.frame.width {
                 lastX = 0
                 lastY += tagLabel.frame.height + Constants.discussionsTCTagsVerticalPadding
             }
