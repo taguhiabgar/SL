@@ -27,8 +27,9 @@ class DiscussionsTableViewCell: UITableViewCell {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var bottomStackView: UIStackView!
     
-    @IBOutlet weak var tagsViewHeightConstraint: NSLayoutConstraint!
+    var cellHeight: CGFloat = 0
     
+    private var tagsMaxY: CGFloat = 0
     
     // MARK: - Methods
     
@@ -46,7 +47,7 @@ class DiscussionsTableViewCell: UITableViewCell {
         // tags view
         setupTagsView(with: content.tags)
         
-        
+        cellHeight = tagsMaxY + titleLabel.frame.height + bottomStackView.frame.height
         
         // NOTE: - height may vary here
         
@@ -65,7 +66,7 @@ class DiscussionsTableViewCell: UITableViewCell {
         for tag in tags {
             let tagLabel = UILabel()
             tagLabel.text = tag
-            tagLabel.font = dateLabel.font
+//            tagLabel.font = dateLabel.font
             tagLabel.sizeToFit()
             tagLabel.textColor = UIColor.white
             tagLabel.textAlignment = .center
@@ -86,14 +87,12 @@ class DiscussionsTableViewCell: UITableViewCell {
             }
             tagLabel.frame.origin = CGPoint(x: lastX, y: lastY)
             lastX += tagLabel.frame.width + Constants.discussionsTCTagsHorizontalPadding
+            tagsMaxY = tagLabel.frame.height + lastY
             
             tagsView.addSubview(tagLabel)
         }
         setNeedsLayout()
         setNeedsUpdateConstraints()
-//        tagsView.frame.size.height = 50.0
-        tagsViewHeightConstraint.constant = 50
         updateConstraints()
-//        tagsView.frame.size.height = lastY + tagLabels[0].frame.height
     }
 }

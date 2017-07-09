@@ -47,7 +47,7 @@ class ViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = Constants.emptyCellHeight
         
-//        tableView.allowsSelection = false
+        tableView.allowsSelection = false
         
         // read data from file
         perform(#selector(requestData), with: nil, afterDelay: 2.0)
@@ -117,6 +117,7 @@ class ViewController: UIViewController {
         }
         return next!
     }
+    
 }
 
 // MARK: - TableView Delegate and Datasource
@@ -134,16 +135,17 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 //        }
 //        discussionCell.titleLabel.text = nil
         
+        print("cell for row \(indexPath.row)")
         
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // not implemented
-        print(discussions[indexPath.row].tags)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        print("will display \(indexPath.row)")
         if indexPath.row < discussions.count {
             let discussionCell = cell as? DiscussionsTableViewCell
             discussionCell?.drawContent(content: discussions[indexPath.row])
@@ -151,6 +153,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        print("height \(indexPath.row)")
+        if indexPath.row < discussions.count {
+//            return heightForCell(withDiscussion: discussions[indexPath.row])
+        }
+        return 150
     }
 }

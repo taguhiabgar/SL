@@ -116,7 +116,6 @@
                 <outlet property="leftView" destination="4rb-Xm-sMa" id="Ybo-aB-y22"/>
                 <outlet property="rightView" destination="QXM-4S-uOX" id="PwG-Kn-kgl"/>
                 <outlet property="tagsView" destination="pT6-IV-Qgf" id="0Fl-gO-FHr"/>
-                <outlet property="tagsViewHeightConstraint" destination="omW-cN-EbK" id="Oky-bJ-kWQ"/>
                 <outlet property="titleLabel" destination="5EJ-9m-T5w" id="aVM-82-Yal"/>
                 <outlet property="votesLabel" destination="oD0-nv-Z5c" id="ggI-ri-CFJ"/>
             </connections>
