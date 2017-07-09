@@ -29,7 +29,11 @@ class DiscussionsTableViewCell: UITableViewCell {
     // MARK: - Methods
     
     func drawContent(content: DiscussionContent) {
-        
+        votesLabel.text = "\(content.votesCount)"
+        answersLabel.text = "\(content.answersCount)"
+        titleLabel.text = content.title + content.title + content.title + content.title
+        dateLabel.text = "\(content.date)"
+        authorLabel.text = content.author
         // NOTE: - height may vary here
         
     }
