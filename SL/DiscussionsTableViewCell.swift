@@ -22,14 +22,12 @@ class DiscussionsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var rightView: UIStackView!
     @IBOutlet weak var titleLabel: UILabel!
-    var tagsView: UIView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var bottomStackView: UIStackView!
-    
     @IBOutlet weak var tagsVerticalView: UIView!
     
-    private var tagsMaxY: CGFloat = 0
+    var tagsView: UIView!
     
     // MARK: - Methods
     
@@ -37,7 +35,7 @@ class DiscussionsTableViewCell: UITableViewCell {
         votesLabel.text = "\(content.votesCount)"
         answersLabel.text = "\(content.answersCount)"
         titleLabel.text = content.title.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        dateLabel.text = "\(content.date)"
+        dateLabel.text = formattedDate(content.date)
         authorLabel.text = content.author
         
         // configure title label
@@ -47,14 +45,22 @@ class DiscussionsTableViewCell: UITableViewCell {
         setupTagsView(with: content.tags)
         
         tagsVerticalView.addSubview(tagsView)
-        
+        // add contraints from top and bottom so that tagsVerticalView will have correct height
         let tagsViewConstraints: [NSLayoutConstraint] = [
             NSLayoutConstraint(item: self.tagsView, attribute: .top, relatedBy: .equal, toItem: tagsVerticalView, attribute: .top, multiplier: 1,
                                constant: 0),
             NSLayoutConstraint(item: self.tagsView, attribute: .bottom, relatedBy: .equal, toItem: tagsVerticalView, attribute: .bottom, multiplier: 1, constant: 0)
         ]
-        
         self.addConstraints(tagsViewConstraints)
+    }
+    
+    func formattedDate(_ date: Date) -> String {
+        let dateformatter = DateFormatter()
+        dateformatter.dateStyle = DateFormatter.Style.short
+        dateformatter.timeStyle = DateFormatter.Style.short
+        dateformatter.dateFormat = "MM/dd/yy h:mm a"
+        let dateString = dateformatter.string(from: date)
+        return dateString
     }
     
     private func setupTagsView(with tags: [String]) {
@@ -68,7 +74,8 @@ class DiscussionsTableViewCell: UITableViewCell {
         }
         
         var lastX: CGFloat = 0
-        var lastY: CGFloat = 0
+        var lastY: CGFloat = 0        
+        var tagsMaxY: CGFloat = 0
         
         // create labels
         for tag in tags {

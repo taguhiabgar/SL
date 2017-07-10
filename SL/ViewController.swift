@@ -26,9 +26,6 @@ class ViewController: UIViewController {
     // shows index of file which will be loaded when requested
     var nextResourceIndex = 0
     
-    // shows page number of discussions loaded last time
-    var lastPage = 0
-    
     // MARK: - Lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,7 +44,7 @@ class ViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 50
         
-//        tableView.allowsSelection = false
+        tableView.allowsSelection = false
         
         // read data from file
         perform(#selector(requestData), with: nil, afterDelay: 2.0)
@@ -66,17 +63,15 @@ class ViewController: UIViewController {
             let author = dictionary[Constants.discussionAuthorKeyInJSON] as? String ?? Constants.discussionsDefaultAuthorValue
             let content = DiscussionContent(title: title, tags: tags, votesCount: votesCount, answersCount: answersCount, date: date, author: author)
             result.append(content)
-            print(author)
         }
         return result
     }
     
-    @objc fileprivate func requestData() { // only 1/3 file is being read
+    @objc fileprivate func requestData() {
         // create a concurrent queue and perform data requesting inside it
         let queue = DispatchQueue.init(label: "", qos: DispatchQoS.background, attributes: DispatchQueue.Attributes.concurrent, autoreleaseFrequency: DispatchQueue.AutoreleaseFrequency.never, target: nil)
         queue.async {
             let path = self.nextResourceName()
-            print(path)
             do {
                 let text = try String(contentsOfFile: path)
                 if let objectData = text.data(using: String.Encoding.utf8) {
@@ -92,22 +87,17 @@ class ViewController: UIViewController {
                             }
                         }
                     } catch {
-                        print(error) // not handled
+                        print(error)
                     }
                 }
             } catch {
-                print(error) // not handled
+                print(error)
             }
         }
     }
     
     private func updateView() {
         tableView.reloadData()
-//        for indexPath in tableView.indexPathsForVisibleRows! {
-//            let cell = tableView.cellForRow(at: indexPath)
-//            let discussionCell = cell as? DiscussionsTableViewCell
-//            discussionCell?.drawContent(content: discussions[indexPath.row])
-//        }
     }
     
     private func nextResourceName() -> String {
@@ -133,10 +123,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell!
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // not implemented
-    }
-    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         // draw content on cell
         if indexPath.row < discussions.count {
@@ -148,10 +134,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let lastSectionIndex = tableView.numberOfSections - 1
         let lastRowIndex = tableView.numberOfRows(inSection: lastSectionIndex) - 1
         if indexPath.section ==  lastSectionIndex && indexPath.row == lastRowIndex { // last row is reached
+            // create and show activity indicator
             let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
             spinner.startAnimating()
             spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))
-            
             tableView.tableFooterView = spinner
             tableView.tableFooterView?.isHidden = false
             // load next page after 2 seconds
