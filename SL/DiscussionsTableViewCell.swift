@@ -27,11 +27,7 @@ class DiscussionsTableViewCell: UITableViewCell {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var bottomStackView: UIStackView!
     
-    @IBOutlet weak var tagsVerticalStackView: UIStackView!
-    
-    
-    
-    var cellHeight: CGFloat = 0
+    @IBOutlet weak var tagsVerticalView: UIView!
     
     private var tagsMaxY: CGFloat = 0
     
@@ -46,21 +42,19 @@ class DiscussionsTableViewCell: UITableViewCell {
         
         // configure title label
         titleLabel.lineBreakMode = .byWordWrapping
-//        titleLabel.sizeToFit()
         
         // tags view
         setupTagsView(with: content.tags)
         
-        cellHeight = tagsMaxY + titleLabel.frame.height + bottomStackView.frame.height
+        tagsVerticalView.addSubview(tagsView)
         
+        let tagsViewConstraints: [NSLayoutConstraint] = [
+            NSLayoutConstraint(item: self.tagsView, attribute: .top, relatedBy: .equal, toItem: tagsVerticalView, attribute: .top, multiplier: 1,
+                               constant: 0),
+            NSLayoutConstraint(item: self.tagsView, attribute: .bottom, relatedBy: .equal, toItem: tagsVerticalView, attribute: .bottom, multiplier: 1, constant: 0)
+        ]
         
-        tagsView.frame = CGRect(x: 0, y: 0, width: titleLabel.frame.width, height: tagsMaxY)
-//        tagsView.frame.size.height = tagsMaxY
-        
-        tagsVerticalStackView.addArrangedSubview(tagsView)
-        
-        // NOTE: - height may vary here
-        
+        self.addConstraints(tagsViewConstraints)
     }
     
     private func setupTagsView(with tags: [String]) {
@@ -73,7 +67,6 @@ class DiscussionsTableViewCell: UITableViewCell {
             tagsView = UIView()
         }
         
-        
         var lastX: CGFloat = 0
         var lastY: CGFloat = 0
         
@@ -81,7 +74,7 @@ class DiscussionsTableViewCell: UITableViewCell {
         for tag in tags {
             let tagLabel = UILabel()
             tagLabel.text = tag
-//            tagLabel.font = dateLabel.font
+            tagLabel.font = dateLabel.font
             tagLabel.sizeToFit()
             tagLabel.textColor = UIColor.white
             tagLabel.textAlignment = .center
@@ -106,8 +99,6 @@ class DiscussionsTableViewCell: UITableViewCell {
             
             tagsView.addSubview(tagLabel)
         }
-        setNeedsLayout()
-        setNeedsUpdateConstraints()
-        updateConstraints()
+        tagsView.frame.size.height = tagsMaxY
     }
 }

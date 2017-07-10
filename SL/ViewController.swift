@@ -45,7 +45,7 @@ class ViewController: UIViewController {
         
         // configure row height
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = Constants.emptyCellHeight
+        tableView.estimatedRowHeight = 50
         
 //        tableView.allowsSelection = false
         
@@ -136,7 +136,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 //        discussionCell.titleLabel.text = nil
         
         print("cell for row \(indexPath.row)")
-        
+//        cell?.updateConstraintsIfNeeded()
         return cell!
     }
     
@@ -152,12 +152,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        print("height \(indexPath.row)")
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        print("height \(indexPath.row)")
 //        if indexPath.row < discussions.count {
 //            return heightForCell(withDiscussion: discussions[indexPath.row])
 //        }
 //        return UITableViewAutomaticDimension //150
-        return 150
-    }
+//        return 150
+//    }
 }

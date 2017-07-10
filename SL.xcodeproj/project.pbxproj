@@ -117,7 +117,6 @@
 				3D1FA7091F10E6E000D665CA /* Resources */,
 				3D1FA6D31F10D0B000D665CA /* AppDelegate.swift */,
 				3D1FA6D51F10D0B000D665CA /* ViewController.swift */,
-				3D1FA7011F10E33E00D665CA /* DiscussionsTableViewCell.swift */,
 				3D1FA70A1F10E83700D665CA /* Constants.swift */,
 				3D1FA6D71F10D0B000D665CA /* Main.storyboard */,
 				3D1FA6DA1F10D0B000D665CA /* Assets.xcassets */,
@@ -125,6 +124,7 @@
 				3D1FA6DF1F10D0B000D665CA /* Info.plist */,
 				3D1FA70C1F11347D00D665CA /* DiscussionContent.swift */,
 				3D1FA7171F125EBA00D665CA /* DiscussionsTableViewCell.xib */,
+				3D1FA7011F10E33E00D665CA /* DiscussionsTableViewCell.swift */,
 			);
 			path = SL;
 			sourceTree = "<group>";
