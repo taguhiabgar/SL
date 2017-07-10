@@ -71,11 +71,12 @@ class ViewController: UIViewController {
         return result
     }
     
-    @objc private func requestData() { // only 1/3 file is being read
+    @objc fileprivate func requestData() { // only 1/3 file is being read
         // create a concurrent queue and perform data requesting inside it
         let queue = DispatchQueue.init(label: "", qos: DispatchQoS.background, attributes: DispatchQueue.Attributes.concurrent, autoreleaseFrequency: DispatchQueue.AutoreleaseFrequency.never, target: nil)
         queue.async {
             let path = self.nextResourceName()
+            print(path)
             do {
                 let text = try String(contentsOfFile: path)
                 if let objectData = text.data(using: String.Encoding.utf8) {
@@ -112,7 +113,7 @@ class ViewController: UIViewController {
     private func nextResourceName() -> String {
         let next = Constants.allResources[nextResourceIndex]
         nextResourceIndex += 1
-        if nextResourceIndex < Constants.allResources.count {
+        if nextResourceIndex == Constants.allResources.count {
             nextResourceIndex = 0
         }
         return next!
@@ -129,14 +130,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.discussionsTCIdentifier)
-//        let discussionCell = cell as! DiscussionsTableViewCell
-//        for subview in discussionCell.tagsView.subviews {
-//            subview.removeFromSuperview()
-//        }
-//        discussionCell.titleLabel.text = nil
-        
-        print("cell for row \(indexPath.row)")
-//        cell?.updateConstraintsIfNeeded()
         return cell!
     }
     
@@ -145,19 +138,24 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        print("will display \(indexPath.row)")
+        // draw content on cell
         if indexPath.row < discussions.count {
             let discussionCell = cell as? DiscussionsTableViewCell
             discussionCell?.drawContent(content: discussions[indexPath.row])
         }
+        
+        // activity indicator
+        let lastSectionIndex = tableView.numberOfSections - 1
+        let lastRowIndex = tableView.numberOfRows(inSection: lastSectionIndex) - 1
+        if indexPath.section ==  lastSectionIndex && indexPath.row == lastRowIndex { // last row is reached
+            let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+            spinner.startAnimating()
+            spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))
+            
+            tableView.tableFooterView = spinner
+            tableView.tableFooterView?.isHidden = false
+            // load next page after 2 seconds
+            perform(#selector(requestData), with: nil, afterDelay: 2.0)
+        }
     }
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        print("height \(indexPath.row)")
-//        if indexPath.row < discussions.count {
-//            return heightForCell(withDiscussion: discussions[indexPath.row])
-//        }
-//        return UITableViewAutomaticDimension //150
-//        return 150
-//    }
 }
