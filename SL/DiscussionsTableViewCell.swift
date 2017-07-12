@@ -23,6 +23,8 @@ class DiscussionsTableViewCell: UITableViewCell {
   @IBOutlet weak var leftView: UIView!
   @IBOutlet weak var votesLabel: UILabel!
   @IBOutlet weak var answersLabel: UILabel!
+  @IBOutlet weak var bubbleImageView: UIImageView!
+  @IBOutlet weak var tagsLabel: UILabel!
   
   // right side
   
@@ -36,30 +38,32 @@ class DiscussionsTableViewCell: UITableViewCell {
   // MARK: - Methods
   
   func drawContent(content: DiscussionContent, at indexPath: IndexPath) {
-    // clean cell before setting new content
-    votesLabel.text = ""
-    answersLabel.text = ""
-    dateLabel.text = ""
-    authorLabel.text = ""
-    titleLabel.text = ""
-    for subview in tagsVerticalView.subviews {
-      subview.removeFromSuperview()
-    }
-    
+//    // clean cell before setting new content
+//    votesLabel.text = ""
+//    answersLabel.text = ""
+//    dateLabel.text = ""
+//    authorLabel.text = ""
+//    titleLabel.text = ""
+//    bubbleImageView.image = nil
+//    for subview in tagsVerticalView.subviews {
+//      subview.removeFromSuperview()
+//    }
+//    
     // set new content
     votesLabel.text = "\(content.votesCount)"
     answersLabel.text = "\(content.answersCount)"
     dateLabel.text = formattedDate(content.date)
     authorLabel.text = content.author
+//    bubbleImageView.image = Constants.discussionsTCBubbleImage
     
     DispatchQueue.main.async {
       // title label
       self.titleLabel.text = content.title.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-      self.titleLabel.lineBreakMode = .byWordWrapping
+//      self.titleLabel.lineBreakMode = .byWordWrapping
       // tags
       self.setupTags(from: content)
-      
-      self.delegate?.updateHeight(self.frame.height, forCellAt: indexPath)
+      // update height
+//      self.delegate?.updateHeight(self.frame.height, forCellAt: indexPath)
     }
   }
   
@@ -79,38 +83,46 @@ class DiscussionsTableViewCell: UITableViewCell {
   }
   
   func setupTags(from content: DiscussionContent) {
-    let string = content.tags.joined(separator: " ")
-    let textView = UITextView(frame: CGRect(x: 0, y: 0, width: tagsVerticalView.frame.width, height: 10))
-    textView.backgroundColor = UIColor.clear
-    textView.attributedText = getAttributedString(from: string)
-    
-    let pattern = "[^ ]+"
-    let regex = try! NSRegularExpression(pattern: pattern, options: [])
-    let matches = regex.matches(in: string, options: [], range: NSMakeRange(0, string.characters.count))
-    
-    for m in matches {
-      tagsVerticalView.addSubview({
-        let range = m.range
-        var frame = frameOfTextInRange(range: range, inTextView: textView)
-        frame = frame.insetBy(dx: CGFloat(-3), dy: CGFloat(2))
-        frame = frame.offsetBy(dx: CGFloat(0), dy: CGFloat(3))
-        let tag = UIView(frame: frame)
-        tag.layer.cornerRadius = 2
-        tag.backgroundColor = Constants.discussionsTCTagColor
-        return tag
-        }())
+    let attrString = NSMutableAttributedString()
+    for tag in content.tags {
+      attrString.append(NSAttributedString(string: tag, attributes: [NSBackgroundColorAttributeName: UIColor.green]))
     }
     
-    textView.isUserInteractionEnabled = false
-    textView.sizeToFit()
+    tagsLabel.attributedText = attrString
+//    let string = content.tags.joined(separator: " ")
+//    let textView = UITextView(frame: CGRect(x: 0, y: 0, width: tagsVerticalView.frame.width, height: 10))
+//    textView.backgroundColor = UIColor.clear
+//    textView.attributedText = getAttributedString(from: string)
     
-    self.tagsVerticalView.addSubview(textView)
-    // add contraints from top and bottom so that tagsVerticalView will have correct height
-    let tagsViewConstraints: [NSLayoutConstraint] = [
-      NSLayoutConstraint(item: textView, attribute: .top, relatedBy: .equal, toItem: self.tagsVerticalView, attribute: .top, multiplier: 1, constant: 0),
-      NSLayoutConstraint(item: textView, attribute: .bottom, relatedBy: .equal, toItem: self.tagsVerticalView, attribute: .bottom, multiplier: 1, constant: 0)
-    ]
-    self.addConstraints(tagsViewConstraints)
+    
+    
+//    let pattern = "[^ ]+"
+//    let regex = try! NSRegularExpression(pattern: pattern, options: [])
+//    let matches = regex.matches(in: string, options: [], range: NSMakeRange(0, string.characters.count))
+//    
+//    for m in matches {
+//      tagsVerticalView.addSubview({
+//        let range = m.range
+//        var frame = frameOfTextInRange(range: range, inTextView: textView)
+//        frame = frame.insetBy(dx: CGFloat(-3), dy: CGFloat(2))
+//        frame = frame.offsetBy(dx: CGFloat(0), dy: CGFloat(3))
+//        let tag = UIView(frame: frame)
+//        tag.layer.cornerRadius = 2
+//        tag.backgroundColor = Constants.discussionsTCTagColor
+//        return tag
+//        }())
+//    }
+    
+//    textView.isUserInteractionEnabled = false
+//    textView.sizeToFit()
+//    
+//    self.tagsVerticalView.addSubview(textView)
+//    // add contraints from top and bottom so that tagsVerticalView will have correct height
+//    let tagsViewConstraints: [NSLayoutConstraint] = [
+//      NSLayoutConstraint(item: textView, attribute: .top, relatedBy: .equal, toItem: self.tagsVerticalView, attribute: .top, multiplier: 1, constant: 0),
+//      NSLayoutConstraint(item: textView, attribute: .bottom, relatedBy: .equal, toItem: self.tagsVerticalView, attribute: .bottom, multiplier: 1, constant: 0)
+//    ]
+//    self.addConstraints(tagsViewConstraints)
   }
   
   func frameOfTextInRange(range:NSRange, inTextView textView:UITextView) -> CGRect {

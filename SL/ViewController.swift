@@ -44,7 +44,7 @@ class ViewController: UIViewController {
     
     // configure row height
     tableView.rowHeight = UITableViewAutomaticDimension
-    tableView.estimatedRowHeight = 70
+    tableView.estimatedRowHeight = 100
     
     //        tableView.allowsSelection = false
     
@@ -71,7 +71,7 @@ class ViewController: UIViewController {
   
   @objc fileprivate func requestData() {
     // create a concurrent queue and perform data requesting inside it
-    let queue = DispatchQueue.init(label: "", qos: DispatchQoS.background, attributes: DispatchQueue.Attributes.concurrent, autoreleaseFrequency: DispatchQueue.AutoreleaseFrequency.never, target: nil)
+    let queue = DispatchQueue(label: "queue")//, qos: DispatchQoS.background, attributes: DispatchQueue.Attributes.concurrent, autoreleaseFrequency: DispatchQueue.AutoreleaseFrequency.never, target: nil)
     queue.async {
       let path = self.nextResourceName()
       do {
@@ -115,7 +115,7 @@ class ViewController: UIViewController {
 
 // MARK: - TableView Delegate and Datasource
 extension ViewController: UITableViewDelegate, UITableViewDataSource, DiscussionsTableViewCellDelegate {
-  
+
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return discussions.isEmpty ? 20 : discussions.count
   }
@@ -149,11 +149,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource, Discussion
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    if discussions.count > Constants.responceLimitPerRequest {
-      if indexPath.row < heights.count {
-        return heights[indexPath.row]
-      }
-    }
+//    if discussions.count > Constants.responceLimitPerRequest {
+//      if indexPath.row < heights.count {
+//        return heights[indexPath.row]
+//      }
+//    }
     return UITableViewAutomaticDimension
     
   }

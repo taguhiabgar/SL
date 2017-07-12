@@ -36,6 +36,8 @@ class Constants {
     static let discussionsTCTagsHorizontalPadding: CGFloat = 5
     
     static let discussionsTCTagsVerticalPadding: CGFloat = 4
+  
+    static let discussionsTCBubbleImage = UIImage(named: "bubble")
     
     //  values accessors
     
