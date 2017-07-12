@@ -1,0 +1,6 @@
+framework module Pods_SLUITests {
+  umbrella header "Pods-SLUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
