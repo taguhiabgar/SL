@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol DiscussionsTableViewCellDelegate {
+  func updateHeight(_ height: CGFloat, forCellAt indexPath: IndexPath)
+}
+
 class DiscussionsTableViewCell: UITableViewCell {
   
   // MARK: - Properties
+  
+  var delegate: DiscussionsTableViewCellDelegate?
   
   // left side
   
@@ -29,7 +35,7 @@ class DiscussionsTableViewCell: UITableViewCell {
   
   // MARK: - Methods
   
-  func drawContent(content: DiscussionContent) {
+  func drawContent(content: DiscussionContent, at indexPath: IndexPath) {
     // clean cell before setting new content
     votesLabel.text = ""
     answersLabel.text = ""
@@ -52,6 +58,8 @@ class DiscussionsTableViewCell: UITableViewCell {
       self.titleLabel.lineBreakMode = .byWordWrapping
       // tags
       self.setupTags(from: content)
+      
+      self.delegate?.updateHeight(self.frame.height, forCellAt: indexPath)
     }
   }
   

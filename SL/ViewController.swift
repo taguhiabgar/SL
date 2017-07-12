@@ -12,6 +12,8 @@ class ViewController: UIViewController {
   
   // MARK: - Properties
   
+  var heights: [CGFloat] = []
+  
   var tableView: UITableView!
   
   // contains models of all loaded discussions
@@ -81,15 +83,8 @@ class ViewController: UIViewController {
               if let array = outerDictionary["posts"] as? Array<Dictionary<String, Any>> {
                 let result = self.convertToDiscussions(array: array)
                 self.discussions.append(contentsOf: result)
-//                // get indexPaths to update
-//                var rowsToUpdate: [IndexPath] = []
-//                for i in 0..<result.count {
-//                  rowsToUpdate.append(IndexPath(row: self.discussions.count - i - 1, section: 0))
-//                }
                 DispatchQueue.main.async {
                   self.updateView()
-                  // only update added rows
-//                  self.tableView.reloadRows(at: rowsToUpdate, with: UITableViewRowAnimation.automatic)
                 }
               }
             }
@@ -119,7 +114,7 @@ class ViewController: UIViewController {
 }
 
 // MARK: - TableView Delegate and Datasource
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension ViewController: UITableViewDelegate, UITableViewDataSource, DiscussionsTableViewCellDelegate {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return discussions.isEmpty ? 20 : discussions.count
@@ -134,7 +129,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     // draw content on cell
     if indexPath.row < discussions.count {
       let discussionCell = cell as? DiscussionsTableViewCell
-      discussionCell?.drawContent(content: discussions[indexPath.row])
+      discussionCell?.delegate = self
+      discussionCell?.drawContent(content: self.discussions[indexPath.row], at: indexPath)
     }
     
     // activity indicator
@@ -152,8 +148,32 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
   }
   
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    if discussions.count > Constants.responceLimitPerRequest {
+      if indexPath.row < heights.count {
+        return heights[indexPath.row]
+      }
+    }
+    return UITableViewAutomaticDimension
+    
+  }
+  
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    print(discussions[indexPath.row].tags)
+    if let cell = tableView.cellForRow(at: indexPath) as? DiscussionsTableViewCell {
+      print("height: \(cell.frame.height)")
+    }
+  }
+  
+  // MARK: - DiscussionsTableViewCellDelegate
+  
+  func updateHeight(_ height: CGFloat, forCellAt indexPath: IndexPath) {
+    if indexPath.row < heights.count {
+      if heights[indexPath.row] != height {
+        heights[indexPath.row] = height
+      }
+    } else {
+      heights.append(height)
+    }
   }
   
 }
