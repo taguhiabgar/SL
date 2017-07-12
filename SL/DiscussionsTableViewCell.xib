@@ -59,7 +59,7 @@
                     <rect key="frame" x="128" y="36.5" width="464" height="531.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="author" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pym-dg-bR6">
+                <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="author" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pym-dg-bR6">
                     <rect key="frame" x="552.5" y="576" width="39.5" height="16"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="13"/>
@@ -67,7 +67,7 @@
                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </label>
                 <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mm/dd/yy" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f23-6y-tbS">
-                    <rect key="frame" x="483" y="576" width="61.5" height="16"/>
+                    <rect key="frame" x="120" y="576" width="424.5" height="16"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
@@ -91,6 +91,7 @@
                 <constraint firstItem="ylR-Cl-yCq" firstAttribute="width" secondItem="5EJ-9m-T5w" secondAttribute="width" id="a5K-RU-4Mf"/>
                 <constraint firstAttribute="trailing" secondItem="ylR-Cl-yCq" secondAttribute="trailing" constant="8" id="aCV-Rh-xpp"/>
                 <constraint firstAttribute="trailing" secondItem="Pym-dg-bR6" secondAttribute="trailing" constant="8" id="cQU-bx-Bf5"/>
+                <constraint firstItem="f23-6y-tbS" firstAttribute="leading" secondItem="4rb-Xm-sMa" secondAttribute="trailing" id="eMT-vS-7A1"/>
                 <constraint firstAttribute="trailing" secondItem="5EJ-9m-T5w" secondAttribute="trailing" constant="8" id="ve0-jj-FC9"/>
             </constraints>
             <connections>
