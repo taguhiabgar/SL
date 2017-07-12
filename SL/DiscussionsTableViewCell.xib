@@ -20,7 +20,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="120" height="600"/>
                     <subviews>
                         <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oD0-nv-Z5c">
-                            <rect key="frame" x="55" y="262" width="10.5" height="20.5"/>
+                            <rect key="frame" x="55" y="264.5" width="10.5" height="20.5"/>
                             <color key="backgroundColor" red="0.94633643749999996" green="0.94633643749999996" blue="0.94633643749999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
@@ -31,9 +31,9 @@
                             <color key="backgroundColor" red="0.94633643749999996" green="0.94633643749999996" blue="0.94633643749999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7Z-19-JOn">
-                            <rect key="frame" x="55" y="289.5" width="10.5" height="20.5"/>
+                            <rect key="frame" x="56" y="292" width="9" height="16"/>
                             <color key="backgroundColor" red="0.94633643749999996" green="0.94633643749999996" blue="0.94633643749999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" red="0.61347037553787231" green="0.78267180919647217" blue="0.53675282001495361" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>

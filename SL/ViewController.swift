@@ -15,7 +15,13 @@ class ViewController: UIViewController {
   var tableView: UITableView!
   
   // contains models of all loaded discussions
-  var discussions = [DiscussionContent]()
+  var discussions = [DiscussionContent]() {
+    didSet {
+      DispatchQueue.main.async {
+        self.updateView()
+      }
+    }
+  }
   
   // shows index of file which will be loaded when requested
   var nextResourceIndex = 0
@@ -147,13 +153,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if let cell = tableView.cellForRow(at: indexPath) as? DiscussionsTableViewCell {
-      print("x: \(cell.dateLabel.frame.origin.x) : \(cell.authorLabel.frame.origin.x)")
-      print("y: \(cell.dateLabel.frame.origin.y) : \(cell.authorLabel.frame.origin.y)")
-    }
-    
-    
-    print(indexPath.row)
+    print(discussions[indexPath.row].tags)
   }
   
 }
