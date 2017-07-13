@@ -29,7 +29,7 @@ class DiscussionsTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
-    @IBOutlet weak var textView: UITextView! // for tags
+    @IBOutlet weak var tagsLabel: UILabel!
     
     var tagsView: UIView!
     
@@ -81,8 +81,8 @@ class DiscussionsTableViewCell: UITableViewCell {
     
     func setupTags(from content: DiscussionContent) {
         let string = content.tags.joined(separator: " ")
-        textView.backgroundColor = UIColor.clear
-        textView.attributedText = NSAttributedString(string: string)
+        tagsLabel.backgroundColor = UIColor.clear
+        tagsLabel.attributedText = NSAttributedString(string: string)
 //        textView.attributedText = getAttributedString(from: string)
 //        
 //        let pattern = "[^ ]"//"[^ ]+"
@@ -102,8 +102,7 @@ class DiscussionsTableViewCell: UITableViewCell {
 //                }())
 //        }
         
-        textView.isUserInteractionEnabled = false
-        textView.sizeToFit()
+        tagsLabel.sizeToFit()
         
 //        self.tagsVerticalView.addSubview(textView)
 //        // add contraints from top and bottom so that tagsVerticalView will have correct height

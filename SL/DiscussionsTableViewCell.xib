@@ -24,7 +24,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="75" height="108.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble" translatesAutoresizingMaskIntoConstraints="NO" id="wLY-7w-pug">
-                                <rect key="frame" x="11" y="28.5" width="53" height="39"/>
+                                <rect key="frame" x="11" y="64" width="53" height="39"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.93717283010482788" green="0.93730741739273071" blue="0.93714338541030884" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -35,25 +35,19 @@
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ex6-K4-Nip">
                         <rect key="frame" x="79" y="8" width="292" height="92.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVV-nf-XnM">
-                                <rect key="frame" x="0.0" y="0.0" width="292" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Lorem" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVV-nf-XnM">
+                                <rect key="frame" x="0.0" y="0.0" width="292" height="56"/>
                                 <color key="backgroundColor" red="0.98923256500000001" green="0.99380319299999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HTZ-Ed-Oj4">
-                                <rect key="frame" x="0.0" y="20.5" width="292" height="56"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Lorem ipsum dolor sit er elit">
-                                        <attributes>
-                                            <font key="NSFont" metaFont="system" size="14"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
-                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cWz-Te-8fv">
+                                <rect key="frame" x="0.0" y="56" width="292" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hGk-gO-OXf">
                                 <rect key="frame" x="0.0" y="76.5" width="292" height="16"/>
                                 <subviews>
@@ -76,14 +70,14 @@
                         </subviews>
                     </stackView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ga0-nz-z9O">
-                        <rect key="frame" x="33.5" y="40" width="8.5" height="16"/>
+                        <rect key="frame" x="33.5" y="75.5" width="8.5" height="16"/>
                         <color key="backgroundColor" red="0.93717283010482788" green="0.93730741739273071" blue="0.93714338541030884" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.64380741119384766" green="0.80396860837936401" blue="0.58004719018936157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKw-Df-txO">
-                        <rect key="frame" x="32" y="8" width="10.5" height="20.5"/>
+                        <rect key="frame" x="32" y="43.5" width="10.5" height="20.5"/>
                         <color key="backgroundColor" red="0.92754379846155643" green="0.93730741739273071" blue="0.93730741739273071" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -98,8 +92,8 @@
                     <constraint firstItem="yKw-Df-txO" firstAttribute="bottom" secondItem="WVV-nf-XnM" secondAttribute="bottom" id="IKS-gO-Qrh"/>
                     <constraint firstItem="qhS-jO-6rI" firstAttribute="height" secondItem="Buw-gX-jJz" secondAttribute="height" id="Mpu-zD-Uqg"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Ex6-K4-Nip" secondAttribute="bottom" id="Qx4-TT-TV1"/>
+                    <constraint firstItem="wLY-7w-pug" firstAttribute="top" secondItem="cWz-Te-8fv" secondAttribute="top" id="SSX-Ae-MSB"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Ex6-K4-Nip" secondAttribute="trailing" constant="-4" id="aEj-f5-dhI"/>
-                    <constraint firstItem="wLY-7w-pug" firstAttribute="top" secondItem="HTZ-Ed-Oj4" secondAttribute="top" id="boC-Br-FQg"/>
                     <constraint firstItem="yKw-Df-txO" firstAttribute="centerX" secondItem="qhS-jO-6rI" secondAttribute="centerX" id="cNa-md-5kA"/>
                     <constraint firstItem="qhS-jO-6rI" firstAttribute="leading" secondItem="Buw-gX-jJz" secondAttribute="leadingMargin" constant="-8" id="eFR-wV-khx"/>
                     <constraint firstItem="Ga0-nz-z9O" firstAttribute="centerX" secondItem="qhS-jO-6rI" secondAttribute="centerX" id="if0-yB-gsN"/>
@@ -111,7 +105,7 @@
                 <outlet property="authorLabel" destination="T9j-Tf-Hdl" id="yGI-df-vOU"/>
                 <outlet property="dateLabel" destination="M9d-jo-IvS" id="84w-cs-22S"/>
                 <outlet property="leftView" destination="qhS-jO-6rI" id="Uz9-wh-I4T"/>
-                <outlet property="textView" destination="HTZ-Ed-Oj4" id="RJd-Bb-Bmk"/>
+                <outlet property="tagsLabel" destination="cWz-Te-8fv" id="YQh-Xe-m6y"/>
                 <outlet property="titleLabel" destination="WVV-nf-XnM" id="41E-0U-v6W"/>
                 <outlet property="votesLabel" destination="yKw-Df-txO" id="mRL-Tq-Y8r"/>
             </connections>
