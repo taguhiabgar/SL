@@ -159,9 +159,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource, Discussion
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? DiscussionsTableViewCell {
-            print("height: \(cell.frame.height)")
-        }
+//        if let cell = tableView.cellForRow(at: indexPath) as? DiscussionsTableViewCell {
+//        }
     }
     
     // MARK: - DiscussionsTableViewCellDelegate
